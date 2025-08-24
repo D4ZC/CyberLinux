@@ -1,0 +1,289 @@
+#!/usr/bin/env bash
+
+# Kali Linux Environment - Cyberpunk Japanese Theme
+# Script del lanzador de aplicaciones con estilo Cyberpunk
+
+# Configuración de Rofi
+rofi_command="rofi -theme ~/.config/rofi/rounded-common.rasi"
+
+# Categorías de aplicaciones
+pentesting="🔒  Pentesting"
+system="⚙️   Sistema"
+internet="🌐  Internet"
+multimedia="🎵  Multimedia"
+office="📄  Oficina"
+development="💻  Desarrollo"
+games="🎮  Juegos"
+utilities="🛠️   Utilidades"
+
+# Función para mostrar categorías
+show_categories() {
+    echo -e "$pentesting\n$system\n$internet\n$multimedia\n$office\n$development\n$games\n$utilities" | $rofi_command -dmenu -p "Selecciona categoría" -selected-row 0
+}
+
+# Función para mostrar aplicaciones de pentesting
+show_pentesting() {
+    echo -e "🔍  Nmap\n🌐  Wireshark\n📡  Aircrack-ng\n🔐  John the Ripper\n💣  Hydra\n🕵️   Metasploit\n🔧  Burp Suite\n📊  OWASP ZAP" | $rofi_command -dmenu -p "Pentesting" -selected-row 0
+}
+
+# Función para mostrar aplicaciones del sistema
+show_system() {
+    echo -e "⚙️   Configuración\n📁  Administrador de archivos\n🖥️   Monitor del sistema\n🔧  Herramientas del sistema\n📊  Monitor de recursos" | $rofi_command -dmenu -p "Sistema" -selected-row 0
+}
+
+# Función para mostrar aplicaciones de internet
+show_internet() {
+    echo -e "🌐  Firefox\n📧  Thunderbird\n💬  Telegram\n📱  Discord\n🎥  YouTube\n📺  Netflix" | $rofi_command -dmenu -p "Internet" -selected-row 0
+}
+
+# Función para mostrar aplicaciones multimedia
+show_multimedia() {
+    echo -e "🎵  VLC\n🎨  GIMP\n📷  Shotwell\n🎬  Kdenlive\n🎧  Audacity" | $rofi_command -dmenu -p "Multimedia" -selected-row 0
+}
+
+# Función para mostrar aplicaciones de oficina
+show_office() {
+    echo -e "📝  LibreOffice Writer\n📊  LibreOffice Calc\n📋  LibreOffice Impress\n📚  Calibre\n✏️   Gedit" | $rofi_command -dmenu -p "Oficina" -selected-row 0
+}
+
+# Función para mostrar aplicaciones de desarrollo
+show_development() {
+    echo -e "💻  Neovim\n🔧  Geany\n🐍  Python\n☕  Java\n🐘  PHP\n🌐  Node.js" | $rofi_command -dmenu -p "Desarrollo" -selected-row 0
+}
+
+# Función para mostrar juegos
+show_games() {
+    echo -e "🎮  Steam\n🏆  Lutris\n🎲  Juegos del sistema\n🕹️   Emuladores" | $rofi_command -dmenu -p "Juegos" -selected-row 0
+}
+
+# Función para mostrar utilidades
+show_utilities() {
+    echo -e "📋  Portapapeles\n🎨  Selector de color\n📸  Captura de pantalla\n🔍  Buscador de archivos\n📏  Regla de pantalla" | $rofi_command -dmenu -p "Utilidades" -selected-row 0
+}
+
+# Función para ejecutar aplicaciones de pentesting
+run_pentesting() {
+    case $1 in
+        "🔍  Nmap")
+            kitty --class=nmap -e nmap
+            ;;
+        "🌐  Wireshark")
+            sudo wireshark
+            ;;
+        "📡  Aircrack-ng")
+            kitty --class=aircrack -e aircrack-ng
+            ;;
+        "🔐  John the Ripper")
+            kitty --class=john -e john
+            ;;
+        "💣  Hydra")
+            kitty --class=hydra -e hydra
+            ;;
+        "🕵️   Metasploit")
+            kitty --class=msf -e msfconsole
+            ;;
+        "🔧  Burp Suite")
+            burpsuite
+            ;;
+        "📊  OWASP ZAP")
+            zaproxy
+            ;;
+    esac
+}
+
+# Función para ejecutar aplicaciones del sistema
+run_system() {
+    case $1 in
+        "⚙️   Configuración")
+            gnome-control-center
+            ;;
+        "📁  Administrador de archivos")
+            thunar
+            ;;
+        "🖥️   Monitor del sistema")
+            kitty --class=htop -e htop
+            ;;
+        "🔧  Herramientas del sistema")
+            gnome-tweaks
+            ;;
+        "📊  Monitor de recursos")
+            kitty --class=btop -e btop
+            ;;
+    esac
+}
+
+# Función para ejecutar aplicaciones de internet
+run_internet() {
+    case $1 in
+        "🌐  Firefox")
+            firefox
+            ;;
+        "📧  Thunderbird")
+            thunderbird
+            ;;
+        "💬  Telegram")
+            telegram-desktop
+            ;;
+        "📱  Discord")
+            discord
+            ;;
+        "🎥  YouTube")
+            firefox https://youtube.com
+            ;;
+        "📺  Netflix")
+            firefox https://netflix.com
+            ;;
+    esac
+}
+
+# Función para ejecutar aplicaciones multimedia
+run_multimedia() {
+    case $1 in
+        "🎵  VLC")
+            vlc
+            ;;
+        "🎨  GIMP")
+            gimp
+            ;;
+        "📷  Shotwell")
+            shotwell
+            ;;
+        "🎬  Kdenlive")
+            kdenlive
+            ;;
+        "🎧  Audacity")
+            audacity
+            ;;
+    esac
+}
+
+# Función para ejecutar aplicaciones de oficina
+run_office() {
+    case $1 in
+        "📝  LibreOffice Writer")
+            libreoffice --writer
+            ;;
+        "📊  LibreOffice Calc")
+            libreoffice --calc
+            ;;
+        "📋  LibreOffice Impress")
+            libreoffice --impress
+            ;;
+        "📚  Calibre")
+            calibre
+            ;;
+        "✏️   Gedit")
+            gedit
+            ;;
+    esac
+}
+
+# Función para ejecutar aplicaciones de desarrollo
+run_development() {
+    case $1 in
+        "💻  Neovim")
+            kitty --class=nvim -e nvim
+            ;;
+        "🔧  Geany")
+            geany
+            ;;
+        "🐍  Python")
+            kitty --class=python -e python3
+            ;;
+        "☕  Java")
+            kitty --class=java -e java
+            ;;
+        "🐘  PHP")
+            kitty --class=php -e php
+            ;;
+        "🌐  Node.js")
+            kitty --class=node -e node
+            ;;
+    esac
+}
+
+# Función para ejecutar juegos
+run_games() {
+    case $1 in
+        "🎮  Steam")
+            steam
+            ;;
+        "🏆  Lutris")
+            lutris
+            ;;
+        "🎲  Juegos del sistema")
+            gnome-games
+            ;;
+        "🕹️   Emuladores")
+            retroarch
+            ;;
+    esac
+}
+
+# Función para ejecutar utilidades
+run_utilities() {
+    case $1 in
+        "📋  Portapapeles")
+            copyq show
+            ;;
+        "🎨  Selector de color")
+            gpick
+            ;;
+        "📸  Captura de pantalla")
+            flameshot gui
+            ;;
+        "🔍  Buscador de archivos")
+            catfish
+            ;;
+        "📏  Regla de pantalla")
+            screenruler
+            ;;
+    esac
+}
+
+# Función principal
+main() {
+    # Mostrar categorías
+    category="$(show_categories)"
+    
+    case $category in
+        $pentesting)
+            app="$(show_pentesting)"
+            run_pentesting "$app"
+            ;;
+        $system)
+            app="$(show_system)"
+            run_system "$app"
+            ;;
+        $internet)
+            app="$(show_internet)"
+            run_internet "$app"
+            ;;
+        $multimedia)
+            app="$(show_multimedia)"
+            run_multimedia "$app"
+            ;;
+        $office)
+            app="$(show_office)"
+            run_office "$app"
+            ;;
+        $development)
+            app="$(show_development)"
+            run_development "$app"
+            ;;
+        $games)
+            app="$(show_games)"
+            run_games "$app"
+            ;;
+        $utilities)
+            app="$(show_utilities)"
+            run_utilities "$app"
+            ;;
+        *)
+            exit 0
+            ;;
+    esac
+}
+
+# Ejecutar función principal
+main "$@"

@@ -1,0 +1,97 @@
+/*******************************************************************************
+ * CYBERPUNK JAPANESE THEME FOR ROFI 
+ * User                 : LR-Tech               
+ * Theme Repo           : https://github.com/lr-tech/rofi-themes-collection
+ * Modified for         : Cyberpunk Japanese Style
+ *******************************************************************************/
+
+* {
+    font:   "Hack Nerd Font 12";
+
+    background-color:   transparent;
+    text-color:         #FF0033;
+
+    margin:     0px;
+    padding:    0px;
+    spacing:    0px;
+}
+
+window {
+    location:       center;
+    width:          500;
+    border-radius:  15px;
+    
+    background-color:   #0A0A0A;
+    border:             2px;
+    border-color:       #FF0033;
+}
+
+mainbox {
+    padding:    15px;
+}
+
+inputbar {
+    background-color:   #1A1A1A;
+    border-color:       #FF0044;
+
+    border:         2px;
+    border-radius:  20px;
+
+    padding:    10px 20px;
+    spacing:    10px;
+    children:   [ prompt, entry ];
+}
+
+prompt {
+    text-color: #FF0033;
+}
+
+entry {
+    placeholder:        "Search...";
+    placeholder-color:  #666666;
+}
+
+message {
+    margin:             15px 0 0;
+    border-radius:      20px;
+    border-color:       #FF0044;
+    background-color:   #1A1A1A;
+}
+
+textbox {
+    padding:    10px 30px;
+}
+
+listview {
+    background-color:   transparent;
+
+    margin:     15px 0 0;
+    lines:      8;
+    columns:    1;
+
+    fixed-height: false;
+}
+
+element {
+    padding:        10px 20px;
+    spacing:        10px;
+    border-radius:  20px;
+}
+
+element normal active {
+    text-color: #FF0033;
+}
+
+element selected normal, element selected active {
+    background-color:   #FF0044;
+    text-color:         #000000;
+}
+
+element-icon {
+    size:           1em;
+    vertical-align: 0.5;
+}
+
+element-text {
+    text-color: inherit;
+}

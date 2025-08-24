@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+
+# Kali Linux Environment - Cyberpunk Japanese Theme
+# Script del menú de power con estilo Cyberpunk
+
+# Configuración de colores
+bg="#0A0A0A"
+bg-alt="#1A1A1A"
+fg="#FF0033"
+fg-alt="#FF0044"
+
+# Configuración de Rofi
+rofi_command="rofi -theme ~/.config/polybar/scripts/style-3.rasi"
+
+# Opciones del menú
+shutdown="⏻  Apagar"
+reboot="🔄  Reiniciar"
+lock="🔒  Bloquear"
+suspend="💤  Suspender"
+logout="🚪  Cerrar Sesión"
+cancel="❌  Cancelar"
+
+# Función para mostrar el menú
+show_menu() {
+    echo -e "$shutdown\n$reboot\n$lock\n$suspend\n$logout\n$cancel" | $rofi_command -dmenu -selected-row 2
+}
+
+# Función para confirmar acción
+confirm_action() {
+    local action="$1"
+    local message="$2"
+    
+    echo -e "✅  Sí\n❌  No" | $rofi_command -dmenu -mesg "$message" -selected-row 0
+}
+
+# Función principal
+main() {
+    # Mostrar menú principal
+    chosen="$(show_menu)"
+    
+    case $chosen in
+        $shutdown)
+            # Confirmar apagado
+            confirm=$(confirm_action "shutdown" "¿Estás seguro de que quieres apagar el sistema?")
+            if [[ $confirm == "✅  Sí" ]]; then
+                systemctl poweroff
+            fi
+            ;;
+        $reboot)
+            # Confirmar reinicio
+            confirm=$(confirm_action "reboot" "¿Estás seguro de que quieres reiniciar el sistema?")
+            if [[ $confirm == "✅  Sí" ]]; then
+                systemctl reboot
+            fi
+            ;;
+        $lock)
+            # Bloquear pantalla
+            if command -v i3lock &> /dev/null; then
+                i3lock -i ~/.config/wallpapers/cyberpunk-lock.png
+            elif command -v slock &> /dev/null; then
+                slock
+            else
+                xset s activate
+            fi
+            ;;
+        $suspend)
+            # Suspender sistema
+            confirm=$(confirm_action "suspend" "¿Estás seguro de que quieres suspender el sistema?")
+            if [[ $confirm == "✅  Sí" ]]; then
+                systemctl suspend
+            fi
+            ;;
+        $logout)
+            # Cerrar sesión
+            confirm=$(confirm_action "logout" "¿Estás seguro de que quieres cerrar la sesión?")
+            if [[ $confirm == "✅  Sí" ]]; then
+                if [[ $XDG_SESSION_TYPE == "x11" ]]; then
+                    pkill -u $USER
+                else
+                    loginctl terminate-user $USER
+                fi
+            fi
+            ;;
+        $cancel)
+            # Cancelar acción
+            exit 0
+            ;;
+        *)
+            # Opción no válida
+            exit 1
+            ;;
+    esac
+}
+
+# Ejecutar función principal
+main "$@"

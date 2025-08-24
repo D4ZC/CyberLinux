@@ -1,0 +1,141 @@
+* {
+    bg: #0A0A0A;
+    bg-alt: #1A1A1A;
+    fg: #FF0033;
+    fg-alt: #FF0044;
+    
+    border: 0;
+    margin: 0;
+    padding: 0;
+    spacing: 0;
+}
+
+window {
+    width: 25%;
+    border: 2px;
+    border-color: #FF0033;
+    border-radius: 15px;
+    background-color: #0A0A0A;
+}
+
+element {
+    padding: 10 14;
+    background-color: transparent;
+    text-color: #FF0033;
+    cursor: pointer;
+}
+
+element selected {
+    background-color: #FF0044;
+    text-color: #000000;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+    font: "Hack Nerd Font 12";
+}
+
+element-icon {
+    background-color: transparent;
+    text-color: inherit;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    size: 20;
+    padding: 0;
+}
+
+element selected element-icon {
+    background-color: transparent;
+    text-color: inherit;
+}
+
+element selected element-text {
+    background-color: transparent;
+    text-color: inherit;
+}
+
+listview {
+    background-color: transparent;
+    columns: 1;
+    lines: 8;
+    spacing: 0;
+}
+
+mainbox {
+    background-color: transparent;
+    padding: 12;
+}
+
+inputbar {
+    children: [entry];
+    background-color: #1A1A1A;
+    border-radius: 10px;
+    padding: 8 12;
+    margin: 0 0 12 0;
+}
+
+entry {
+    background-color: transparent;
+    text-color: #FF0033;
+    placeholder: "Select font...";
+    placeholder-color: #666666;
+    padding: 8 12;
+    margin: 0;
+    font: "Hack Nerd Font 12";
+}
+
+case-indicator {
+    background-color: transparent;
+    text-color: #FF0033;
+    spacing: 0;
+}
+
+textbox {
+    background-color: transparent;
+    text-color: #FF0033;
+    padding: 8 12;
+    margin: 0;
+    font: "Hack Nerd Font 12";
+}
+
+listview {
+    background-color: transparent;
+    columns: 1;
+    lines: 8;
+    spacing: 0;
+}
+
+scrollbar {
+    width: 4px;
+    border: 0;
+    handle-width: 8px;
+    handle-color: #FF0044;
+    handle-color-hover: #FF0066;
+    background-color: #1A1A1A;
+}
+
+sidebar {
+    width: 4px;
+    border: 0;
+    background-color: #1A1A1A;
+}
+
+button {
+    spacing: 0;
+    text-color: #FF0033;
+    background-color: transparent;
+    border: 0;
+    padding: 8;
+}
+
+button selected {
+    background-color: #FF0044;
+    text-color: #000000;
+}
+
+button:hover {
+    background-color: #FF0066;
+    text-color: #000000;
+}
